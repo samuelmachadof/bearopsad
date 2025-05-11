@@ -1,0 +1,48 @@
+# config.yaml
+# Configuration générale
+target: "10.10.11.51"
+wordlists:
+  users: "/usr/share/seclists/Usernames/xato-net-10-million-usernames.txt"
+  passwords: "/home/samy/rockyou.txt"
+credentials:
+  - user: "rose"
+    pass: "KxEPkKe6R8su"
+
+# Configuration des modules
+modules:
+  netexec:
+    enabled: true
+    protocols:
+      - smb
+      - ldap
+      - winrm
+    options:
+      shares: true
+      
+  kerbrute:
+    enabled: true
+    options:
+      userenum: true
+      
+  bloodhound:
+    enabled: true
+    options:
+      collect_all: true
+      
+  certipy:
+    enabled: true
+    options:
+      find_templates: true
+      relay: false
+      
+  responder:
+    enabled: false
+    options:
+      analyze_mode: true
+      interface: "tun0"
+      
+  bloodyad:
+    enabled: true
+    options:
+      check_acls: true
+      shadow_creds: true
